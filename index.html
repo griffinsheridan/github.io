@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Griffin Sheridan | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!--SCAFFOLD--> 
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Griffin Sheridan</a>
+
+            <div class="nav-links"> 
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hi, I'm Griffin 👋</h1>
+            <p class="tagline">Student-Athlete | Aspiring Software Engineer</p>
+            <p class="hero-bio">Computer Science Student and Club Lacrosse Player at Florida Atlantic University.</p>
+            
+            <div class="hero-buttons">
+                <a href="#projects" class="btn primary">View My Projects</a>
+                <a href="#contact" class="btn secondary">Contact Me</a>
+            </div>
+        </div>
+        
+        <img src="./img/laxheadshot.jpg" alt="Griffin Sheridan" class="hero-image">
+    </section>
+
+    <!-- MAIN CONTENT-->
+    <main>
+
+        <!-- ABOUT ME SECTION - Light Blue-ish -->
+        <section id="about" class="about-section" style="background-color: #f0f9ff;">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a Computer Science student at Florida Atlantic University (FAU) and a competitive lacrosse player. 
+                    Balancing athletics and academics has taught me discipline, time management, and how to perform under pressure.</p>
+                    
+                    <p>When I'm not on the field, I'm coding and building websites. I enjoy turning ideas into functional digital experiences 
+                    and am always looking for opportunities to learn and grow as a developer.</p>
+                </div>
+                
+                <div class="about-image">
+                    <img src="./img/laxheadshot.jpg" alt="Griffin Sheridan playing lacrosse">
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION - Light Gray (your original) -->
+        <section id="skills" class="py-20 bg-gray-50">
+          <div class="max-w-4xl mx-auto px-6">
+            <h2 class="skills-header text-4xl font-bold text-center mb-16">
+              Skills & Technologies
+            </h2>
+
+            <div class="skills-carousel relative max-w-2xl mx-auto">
+              <div id="skill-card" class="skill-card mx-auto">
+                <h3 id="card-title" class="text-3xl font-semibold mb-8 text-center"></h3>
+                <ul id="card-list" class="skill-list"></ul>
+              </div>
+
+              <button onclick="prevSkill()" class="carousel-arrow left">←</button>
+              <button onclick="nextSkill()" class="carousel-arrow right">→</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECTS SECTION - Very Light Warm -->
+        <section id="projects" class="projects-section" style="background-color: #fff7ed;">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Personal Portfolio Website</h3>
+                    <p class="project-description">You're looking at it! A responsive portfolio built with HTML, CSS, and JavaScript. Currently adding interactive elements and improving design.</p>
+                    <a href="#" class="project-link">View Live Site →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Intro to Web Programming Final Project</h3>
+                    <p class="project-description">Built a full responsive website from scratch using HTML, CSS, and JavaScript as my final project for the course.</p>
+                    <a href="https://griffinsheridan.github.io/web-programming-project/" class="project-link">View Project →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION - Very Light Blue-Gray -->
+        <section id="experience" class="experience-section" style="background-color: #f0f4f8;">
+            <h2>Experience</h2>
+            <div class="experience-grid">
+
+                <div class="experience-card">
+                    <h3>Data Entry Assistant</h3>
+                    <p class="company">Family Business • 2024 – Present</p>
+                    <ul class="experience-list">
+                        <li>Performed accurate data entry and database organization</li>
+                        <li>Improved data management processes and workflow efficiency</li>
+                        <li>Gained practical experience working with real-world business data</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION - Your original gradient -->
+        <section id="contact" class="contact-section">
+            <h2>Get In Touch</h2>
+            <p class="contact-text">I'm currently looking for software engineering internships and open to connecting with professionals in tech and AI.</p>
+            
+            <div class="contact-buttons">
+                <a href="mailto:griffinjsheridan@gmail.com" class="btn primary">Email Me</a>
+                <a href="https://www.linkedin.com/in/griffin-sheridan-bb17293a5" target="_blank" class="btn secondary">LinkedIn</a>
+                <a href="https://github.com/griffinsheridan" target="_blank" class="btn secondary">GitHub</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer> 
+        <p>&copy; 2026 Griffin Sheridan. Built with HTML, CSS, and JavaScript.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+    <!-- Skills Carousel Script -->
+    <script>
+    const skillsData = [
+      { title: "Programming Languages", items: ["Python", "JavaScript", "HTML5 / CSS3", "SQL"] },
+      { title: "AI & Machine Learning", items: ["Machine Learning", "Neural Networks", "Deep Learning", "RAG", "AirLLM", "Ollama"] },
+      { title: "Tools & Technologies", items: ["Docker", "Git & GitHub", "Linux Terminal", "API Integration", "Virtual Environments"] },
+      { title: "Web Development", items: ["Responsive Design", "Full Website Projects", "JavaScript", "Modern CSS"] },
+      { title: "Data Science", items: ["Pandas & NumPy", "Data Cleaning", "Exploratory Analysis", "Matplotlib"] }
+    ];
+
+    let currentSkill = 0;
+
+    function renderCard() {
+      document.getElementById('card-title').textContent = skillsData[currentSkill].title;
+      const listHTML = skillsData[currentSkill].items.map(item => `<li>${item}</li>`).join('');
+      document.getElementById('card-list').innerHTML = listHTML;
+    }
+
+    function nextSkill() {
+      currentSkill = (currentSkill + 1) % skillsData.length;
+      renderCard();
+    }
+
+    function prevSkill() {
+      currentSkill = (currentSkill - 1 + skillsData.length) % skillsData.length;
+      renderCard();
+    }
+
+    renderCard();
+    </script>
+</body>
+</html>
